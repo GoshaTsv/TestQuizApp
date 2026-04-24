@@ -8,7 +8,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
+import javafx.stage.Window;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
 
 public class HelloController {
@@ -23,6 +28,7 @@ public class HelloController {
     public VBox VBoxExact;
     public TextField answerExactField;
     private final Quiz endQuiz = new Quiz();
+    public static FileChooser fileChooser = new FileChooser();
 
 
     public void addVariant(ActionEvent event) {
@@ -48,13 +54,23 @@ public class HelloController {
         }
     }
 
-    public void exportToJSON(ActionEvent event) {
+    public void exportToJSON(ActionEvent event) throws IOException {
         endQuiz.quizName = quizNameField.getText();
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String JSON = gson.toJson(endQuiz);
         System.out.println(JSON);
+        Window stage = quizNameField.getScene().getWindow();
+        fileChooser.setTitle("Сохранить Тест");
+        fileChooser.setInitialFileName("quiz.json");
+        fileChooser.getExtensionFilters().clear();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("json файлы", "*.json"));
+        File file = fileChooser.showSaveDialog(stage);
+        FileWriter fileWriter = new FileWriter(file);
+        fileWriter.write(JSON);
+        fileWriter.close();
     }
     public void initialize(){
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
         VBoxVars.setDisable(false);
         VBoxVars.setVisible(true);
         VBoxExact.setVisible(false);
@@ -71,5 +87,11 @@ public class HelloController {
             VBoxExact.setVisible(false);
             VBoxExact.setDisable(true);
         });
+    }
+    public void showAlert(String t, String c, Alert.AlertType type){
+        Alert alert = new Alert(type);
+        alert.setTitle(t);
+        alert.setContentText(c);
+        alert.show();
     }
 }
