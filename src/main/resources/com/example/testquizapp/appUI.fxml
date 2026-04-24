@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(to bottom ,rgba(0, 0, 0, 1) 0%, rgba(32, 32, 32, 1) 50%, rgba(64, 64, 64, 1) 100%);" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.testquizapp.HelloController">
+   <children>
+      <TextField fx:id="quizNameField" promptText="Название теста...">
+         <VBox.margin>
+            <Insets left="25.0" right="25.0" top="50.0" />
+         </VBox.margin>
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <VBox prefHeight="258.0" prefWidth="800.0">
+         <children>
+            <TextField fx:id="questionNameField" promptText="Вопрос...">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </VBox.margin>
+            </TextField>
+            <HBox alignment="CENTER" prefHeight="58.0" prefWidth="800.0">
+               <VBox.margin>
+                  <Insets top="25.0" />
+               </VBox.margin>
+               <children>
+                  <RadioButton fx:id="radioTypeVar" mnemonicParsing="false" selected="true" text="Варианты ответа" textFill="WHITE" toggleGroup="$answerType">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="50.0" right="50.0" />
+                     </HBox.margin>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="answerType" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="radioTypeExact" layoutX="296.0" layoutY="56.0" mnemonicParsing="false" text="Точный ответ" textFill="WHITE" toggleGroup="$answerType">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="50.0" right="50.0" />
+                     </HBox.margin>
+                  </RadioButton>
+               </children>
+            </HBox>
+            <AnchorPane maxHeight="0.0" minHeight="250.0" prefHeight="0.0" prefWidth="800.0">
+               <children>
+                  <VBox fx:id="VBoxVars" prefHeight="513.0" prefWidth="800.0">
+                     <children>
+                        <ScrollPane fx:id="scrollVars" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="ALWAYS">
+                           <content>
+                              <VBox prefHeight="200.0" prefWidth="798.0">
+                                 <children>
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <TextField prefHeight="37.0" prefWidth="525.0" promptText="Вариант ответа...">
+                                             <HBox.margin>
+                                                <Insets left="20.0" right="20.0" top="20.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </TextField>
+                                          <RadioButton mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" selected="true" text="Правильность" textFill="white">
+                                             <HBox.margin>
+                                                <Insets top="20.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                             <toggleGroup>
+                                                <ToggleGroup fx:id="rightAnswer1" />
+                                             </toggleGroup>
+                                          </RadioButton>
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <TextField prefHeight="37.0" prefWidth="525.0" promptText="Вариант ответа...">
+                                             <HBox.margin>
+                                                <Insets left="20.0" right="20.0" top="20.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </TextField>
+                                          <RadioButton mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="Правильность" textFill="white" toggleGroup="$rightAnswer1">
+                                             <HBox.margin>
+                                                <Insets top="20.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </RadioButton>
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <Button onAction="#addVariant" alignment="CENTER" mnemonicParsing="false" prefHeight="43.0" prefWidth="350.0" style="-fx-background-color: linear-gradient(to bottom right,rgba(255, 255, 255, 1) 0%, rgba(223, 223, 223, 1) 50%, rgba(200, 200, 200, 1) 100%);;" text="Добавить вариант" textAlignment="CENTER" wrapText="true">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="50.0" right="25.0" top="20.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                          <Button onAction="#deleteVariant" alignment="CENTER" mnemonicParsing="false" prefHeight="43.0" prefWidth="350.0" style="-fx-background-color: linear-gradient(to bottom right,rgba(255, 255, 255, 1) 0%, rgba(223, 223, 223, 1) 50%, rgba(200, 200, 200, 1) 100%);;" text="Удалить предыдущий вариант" textAlignment="CENTER" wrapText="true">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="25.0" right="50.0" top="20.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="VBoxExact" alignment="CENTER" disable="true" prefHeight="264.0" prefWidth="800.0" visible="false">
+                     <children>
+                        <TextField fx:id="answerExactField" promptText="Ответ...">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="25.0" right="25.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </children>
+         <VBox.margin>
+            <Insets top="50.0" />
+         </VBox.margin>
+      </VBox>
+      <HBox alignment="CENTER" prefHeight="191.0" prefWidth="800.0">
+         <children>
+            <Button onAction="#addQuestion" alignment="CENTER" mnemonicParsing="false" prefHeight="43.0" prefWidth="300.0" style="-fx-background-color: linear-gradient(to bottom right,rgba(255, 255, 255, 1) 0%, rgba(223, 223, 223, 1) 50%, rgba(200, 200, 200, 1) 100%);;" text="Добавить вопрос" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="50.0" right="50.0" />
+               </HBox.margin>
+            </Button>
+            <Button onAction="#deleteQuestion" alignment="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="300.0" style="-fx-background-color: linear-gradient(to bottom right,rgba(255, 255, 255, 1) 0%, rgba(223, 223, 223, 1) 50%, rgba(200, 200, 200, 1) 100%);;" text="Удалить предыдущий вопрос" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="50.0" right="50.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <Button onAction="#exportToJSON" alignment="CENTER" mnemonicParsing="false" prefHeight="43.0" prefWidth="300.0" style="-fx-background-color: linear-gradient(to bottom right,rgba(255, 255, 255, 1) 0%, rgba(223, 223, 223, 1) 50%, rgba(200, 200, 200, 1) 100%);;" text="Экспорт в JSON" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="50.0" left="250.0" top="50.0" />
+         </VBox.margin>
+      </Button>
+   </children>
+</VBox>

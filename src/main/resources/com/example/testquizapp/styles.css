@@ -1,0 +1,15 @@
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+.scroll-pane{
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+.scroll-bar:vertical{
+        -fx-background-color: transparent;
+        -fx-pref-width: 0;
+}
+.scroll-bar:vertical .thumb{
+    -fx-background-color: #c0c0c0;
+    -fx-background-radius: 3;
+}
