@@ -1,10 +1,13 @@
 package com.example.testquizapp;
 
+import com.example.testquizapp.CustomClasses.Question;
 import com.example.testquizapp.CustomClasses.Quiz;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+
+import java.util.HashMap;
 
 public class HelloController {
     public TextField quizNameField;
@@ -32,7 +35,14 @@ public class HelloController {
 
     public void addQuestion(ActionEvent event) {
         if (radioTypeExact.isSelected()){
-
+            String answer = answerExactField.getText();
+            String questionName = questionNameField.getText();
+            HashMap<String, Boolean> variants = new HashMap<>();
+            variants.put(answer, true);
+            Question question = new Question(questionName, variants);
+            endQuiz.questions.add(question);
+            answerExactField.clear();
+            questionNameField.clear();
         }
     }
 
