@@ -2,6 +2,8 @@ package com.example.testquizapp;
 
 import com.example.testquizapp.CustomClasses.Question;
 import com.example.testquizapp.CustomClasses.Quiz;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -20,7 +22,7 @@ public class HelloController {
     public ToggleGroup rightAnswer1;
     public VBox VBoxExact;
     public TextField answerExactField;
-    private Quiz endQuiz;
+    private final Quiz endQuiz = new Quiz();
 
 
     public void addVariant(ActionEvent event) {
@@ -47,6 +49,10 @@ public class HelloController {
     }
 
     public void exportToJSON(ActionEvent event) {
+        endQuiz.quizName = quizNameField.getText();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String JSON = gson.toJson(endQuiz);
+        System.out.println(JSON);
     }
     public void initialize(){
         VBoxVars.setDisable(false);
